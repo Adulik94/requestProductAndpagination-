@@ -1,0 +1,40 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+h1,
+p {
+    font-family: Lato, serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+}
+
+thead tr th {
+    font-weight: 500;
+    text-align: left;
+    background-color: #fafafa;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+th,
+td {
+    padding: 8px;
+    overflow-wrap: break-word;
+}
+
+/*button {*/
+/*    width: 150px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*button:hover {*/
+/*    background-color: #922c8a !important;*/
+/*    color: #fff !important;*/
+/*}*/
