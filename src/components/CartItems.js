@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from "@material-ui/core/GridList";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Button, Card, CardContent, Typography } from "@mui/material";
 import CardMedia from "@material-ui/core/CardMedia";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const useStyles = makeStyles({
   root: {
@@ -27,12 +30,12 @@ const useStyles = makeStyles({
     margin: 10,
     backgroundColor: "#ececec",
     padding: 10,
-    width: "60%"
+    width: "70%"
   },
   cardArea: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems:"center",
+    alignItems: "center",
     padding: 10,
     transition: "0.3s",
     border: 1,
@@ -96,13 +99,23 @@ const CardItems = ({state, dispatch}) => {
                 image={product.thumbnail}
                 title={product.title}
               />
-              <Typography align='left' variant="inherit" gutterBottom component="h6" style={{
+              <Typography align='center' variant="inherit" gutterBottom  style={{
                 padding: 5,
               }}>
                 {product.title}
                 ${product.price}
               </Typography>
             </CardContent>
+            <CardActionArea style={{display: "flex", alignItems: "center", width: "40%"}}>
+              <Button style={{width: "fit-content", float: "left"}}
+                      onClick={() => changeQty(product.id, product.qty - 1)}>
+                <RemoveCircleIcon fontSize='small'/>
+              </Button>
+              <Typography variant="body2">{product.qty}</Typography>
+              <Button onClick={() => changeQty(product.id, product.qty + 1)}>
+                <AddCircleIcon fontSize='small'/>
+              </Button>
+            </CardActionArea>
           </Card>
         ))
       ) : (
