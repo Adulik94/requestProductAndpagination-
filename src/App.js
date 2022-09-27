@@ -1,19 +1,20 @@
 import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import { cartReducer } from "./reducers/cartReducer";
-import Products from "./components/Products";
 import Pagination from "@material-ui/lab/Pagination";
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
+import CardProduct from './components/CardProduct'
 
 import "./styles.css"
+import Cart from "./components/Cart";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(1)
-  const PageSize = 10;
+  const PageSize = 6;
   const [state, dispatch] = useReducer(cartReducer, {
     products: [],
-    cart: []
+    cart: [],
   });
   const handleChange = (event, value) => {
     setCurrentPage(value);
@@ -34,17 +35,19 @@ export default function App() {
   }, [currentPage]);
 
   return (
-    <div style={{display: "flex", justifyContent:"space-between"}}>
+    <div style={{display: "flex", justifyContent: "space-between"}}>
       <Stack spacing={2}>
         <Typography>Page: {currentPage}</Typography>
+        <CardProduct state={state} dispatch={dispatch}/>
         <Pagination
           shape="rounded"
-          variant="outlined"
+          variant="string"
           count={5}
           page={currentPage}
           onChange={handleChange}/>
-        <Products state={state} dispatch={dispatch}/>
       </Stack>
+      <Cart state={state} dispatch={dispatch}></Cart>
+
     </div>
 
   );

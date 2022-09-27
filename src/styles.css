@@ -2,6 +2,7 @@
     font-family: sans-serif;
     text-align: center;
 }
+
 h1,
 p {
     font-family: Lato, serif;
@@ -29,6 +30,9 @@ td {
     overflow-wrap: break-word;
 }
 
+.css-1p5q5e5-MuiStack-root>:not(style)+:not(style) {
+width: fit-content;
+}
 /*button {*/
 /*    width: 150px;*/
 /*    font-weight: bold;*/
