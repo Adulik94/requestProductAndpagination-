@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import CardActionArea from '@material-ui/core/CardActionArea';
+import { Button, Typography } from '@mui/material'
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-const Cart = ({ state, dispatch }) => {
-  const { cart } = state;
+const Cart = ({state, dispatch}) => {
+  const {cart} = state;
   const [total, setTotal] = useState(0);
+
   console.log("Cart:", cart);
 
   const changeQty = (id, qty) => {
@@ -29,14 +34,14 @@ const Cart = ({ state, dispatch }) => {
         margin: 10,
         backgroundColor: "#ececec",
         padding: 10,
-        width: "50%"
+        width: "60%"
       }}
     >
-      <b style={{ fontSize: 30, alignSelf: "center" }}>Cart</b>
-      <b style={{ alignSelf: "center" }}>Subtotal: ${total}</b>
+      <Typography style={{fontSize: 30, alignSelf: "center"}}>Cart</Typography>
+      <Typography style={{alignSelf: "center"}}>Total: ${total}</Typography>
       {cart.length > 0 ? (
         cart.map((product) => (
-          <div
+          <CardActionArea
             key={product.id}
             style={{
               display: "flex",
@@ -46,11 +51,11 @@ const Cart = ({ state, dispatch }) => {
               margin: 5
             }}
           >
-            <div style={{ display: "flex", gap: 10 }}>
+            <div style={{display: "flex", gap: 10}}>
               <img
                 src={product.thumbnail}
                 alt={product.title}
-                style={{ width: 70, objectFit: "cover" }}
+                style={{width: 70, objectFit: "cover"}}
               />
               <div
                 style={{
@@ -60,23 +65,23 @@ const Cart = ({ state, dispatch }) => {
                 }}
               >
                 <span>{product.title}</span>
-                <b>$ {product.price}</b>
+                <b>${product.price}</b>
               </div>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <button onClick={() => changeQty(product.id, product.qty - 1)}>
-                -
-              </button>
-              <span>{product.qty}</span>
-              <button onClick={() => changeQty(product.id, product.qty + 1)}>
-                +
-              </button>
-            </div>
-          </div>
+            <CardActionArea style={{display: "flex", alignItems: "center", width: "40%"}}>
+              <Button style={{width: "fit-content", float:"left" }} onClick={() => changeQty(product.id, product.qty - 1)}>
+                <RemoveCircleIcon fontSize='small'/>
+              </Button>
+              <Typography variant="body2">{product.qty}</Typography>
+              <Button onClick={() => changeQty(product.id, product.qty + 1)}>
+                <AddCircleIcon fontSize='small'/>
+              </Button>
+            </CardActionArea>
+          </CardActionArea>
         ))
       ) : (
-        <span style={{ alignSelf: "center", padding: 20, color: "#666" }}>
-          Cart is empty!
+        <span style={{alignSelf: "center", padding: 20, color: "#666"}}>
+        Cart is empty!
         </span>
       )}
     </div>
