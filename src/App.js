@@ -19,18 +19,17 @@ export default function App() {
     setCurrentPage(value);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchProducts = async () => {
     const {data} = await axios.get(`https://dummyjson.com/products?limit=${PageSize}&skip=${(currentPage - 1) * PageSize}`);
     dispatch({
       type: "ADD_PRODUCTS",
       payload: data.products,
-      total: data.total
-
     });
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchProducts().then(r => console.log(r));
   }, [currentPage]);
 
   return (
@@ -45,9 +44,7 @@ export default function App() {
           page={currentPage}
           onChange={handleChange}/>
       </Stack>
-      {/*<Cart state={state} dispatch={dispatch}></Cart>*/}
       <CartItems state={state} dispatch={dispatch}></CartItems>
-
     </div>
 
   );

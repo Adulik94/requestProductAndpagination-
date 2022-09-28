@@ -1,11 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import { Button } from '@mui/material';
+import { Button, Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import GridList from "@material-ui/core/GridList";
 import "../styles.css";
 
@@ -66,15 +61,7 @@ const CardProduct = ({state, dispatch}) => {
             >
               {product.title}
             </Typography>
-            {/*<Typography align='center' color="secondary" variant="h6" gutterBottom component="h1">*/}
-            {/*  Current price - ${product.price}*/}
-            {/*</Typography>*/}
-            {/*<Typography align='center' variant="inherit" color="textSecondary" component="p" style={{*/}
-            {/*  padding: 10,*/}
-            {/*}}>*/}
-            {/*  {product.description}*/}
-            {/*</Typography>*/}
-            <CardActionArea style={{display: "flex", flexDirection: "column", alignItems: "center",padding:10 }}>
+            <CardActionArea style={{display: "flex", flexDirection: "column", alignItems: "center", padding: 10}}>
               <Typography align='center' color="secondary" variant="h6" gutterBottom component="h1">
                 Current price - ${product.price}
               </Typography>
@@ -82,13 +69,12 @@ const CardProduct = ({state, dispatch}) => {
                 {product.description}
               </Typography>
             </CardActionArea>
-            <CardActionArea style={{textAlign: "center"}}>
+            <CardActionArea style={{
+              display: "flex", alignItems: "center", padding: 5, margin: 10
+            }}>
               {cart.find((products) => products.id === product.id) ? (
                 <Button
                   style={{
-
-                    marginLeft: 15,
-                    marginBottom: 15,
                     padding: 5,
                     border: 0,
                     borderRadius: 5,
@@ -113,15 +99,12 @@ const CardProduct = ({state, dispatch}) => {
               ) : (
                 <Button
                   style={{
-                    marginLeft: 15,
-                    marginBottom: 15,
                     padding: 5,
                     border: 0,
                     borderRadius: 5,
                     backgroundColor: "rgb(47,14,44)",
                     color: "#fff"
                   }}
-
                   onClick={() =>
                     dispatch({
                       type: "ADD_TO_CART",
