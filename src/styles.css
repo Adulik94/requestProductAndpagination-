@@ -29,17 +29,3 @@ td {
     padding: 8px;
     overflow-wrap: break-word;
 }
-
-.css-1p5q5e5-MuiStack-root>:not(style)+:not(style) {
-width: fit-content;
-}
-
-.makeStyles-cardArea-6 {
-    width: initial;
-    height: auto;
-    border: 1px solid #3e52c3;
-    margin: 5px;
-    display: flex;
-    padding: 10px;
-    justify-content: space-between;
-}

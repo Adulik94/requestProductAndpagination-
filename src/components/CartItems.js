@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from "@material-ui/core/GridList";
-import { Button, Card, CardContent, Typography } from "@mui/material";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardActionArea from "@material-ui/core/CardActionArea";
+import { Button, Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
@@ -128,7 +126,7 @@ const CardItems = ({state, dispatch}) => {
         <Typography align='center' variant="inherit" color="textSecondary" component="p"
                     style={{alignSelf: "center", padding: 20, color: "#666"}}>
           Cart is empty 😱!
-          <p>Add more items in Cart✨</p>
+          <span>Add more items in Cart✨</span>
         </Typography>
       )}
     </GridList>
