@@ -5,9 +5,8 @@ import Pagination from "@material-ui/lab/Pagination";
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import CardProduct from './components/CardProduct'
-
+import CartItems from "./components/CartItems";
 import "./styles.css"
-import Cart from "./components/Cart";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -41,12 +40,13 @@ export default function App() {
         <CardProduct state={state} dispatch={dispatch}/>
         <Pagination
           shape="rounded"
-          variant="string"
+          variant="outlined"
           count={5}
           page={currentPage}
           onChange={handleChange}/>
       </Stack>
-      <Cart state={state} dispatch={dispatch}></Cart>
+      {/*<Cart state={state} dispatch={dispatch}></Cart>*/}
+      <CartItems state={state} dispatch={dispatch}></CartItems>
 
     </div>
 

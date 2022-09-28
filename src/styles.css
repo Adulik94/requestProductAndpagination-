@@ -33,12 +33,13 @@ td {
 .css-1p5q5e5-MuiStack-root>:not(style)+:not(style) {
 width: fit-content;
 }
-/*button {*/
-/*    width: 150px;*/
-/*    font-weight: bold;*/
-/*}*/
 
-/*button:hover {*/
-/*    background-color: #922c8a !important;*/
-/*    color: #fff !important;*/
-/*}*/
+.makeStyles-cardArea-6 {
+    width: initial;
+    height: auto;
+    border: 1px solid #3e52c3;
+    margin: 5px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
