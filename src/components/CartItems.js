@@ -46,7 +46,9 @@ const useStyles = makeStyles({
   },
   media: {
     display: "block",
-    height: 60, objectFit: "cover",
+    height: 60,
+    maxWidth: 90,
+    objectFit: "cover",
     borderRadius: 16,
   },
 
@@ -85,8 +87,10 @@ const CardItems = ({state, dispatch}) => {
 
   return (
     <GridList cellHeight={"auto"} className={classes.gridList} spacing={0}>
-      <Typography style={{fontSize: 30, textAlign: "center"}}>Cart</Typography>
-      <Typography style={{textAlign: "center"}}>Total: ${total}</Typography>
+      <CardActionArea style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%"}}>
+        <Typography style={{fontSize: 30, textAlign: "center"}}>Cart</Typography>
+        <Typography style={{textAlign: "center"}}>Total: ${total}</Typography>
+      </CardActionArea>
       {cart.length > 0 ? (
         cart.map(product => (
           <Card key={product.id} className={classes.cardArea}>
@@ -99,13 +103,15 @@ const CardItems = ({state, dispatch}) => {
                 image={product.thumbnail}
                 title={product.title}
               />
-              <Typography align='center' variant="inherit" gutterBottom  style={{
-                padding: 5,
-              }}>
+            </CardContent>
+            <CardActionArea style={{display: "flex", flexDirection: "column", alignItems: "center", width: "20%"}}>
+              <Typography align='center' variant="inherit">
                 {product.title}
+              </Typography>
+              <Typography align='center' variant="inherit">
                 ${product.price}
               </Typography>
-            </CardContent>
+            </CardActionArea>
             <CardActionArea style={{display: "flex", alignItems: "center", width: "40%"}}>
               <Button style={{width: "fit-content", float: "left"}}
                       onClick={() => changeQty(product.id, product.qty - 1)}>
@@ -119,9 +125,11 @@ const CardItems = ({state, dispatch}) => {
           </Card>
         ))
       ) : (
-        <span style={{alignSelf: "center", padding: 20, color: "#666"}}>
-        Cart is empty!
-        </span>
+        <Typography align='center' variant="inherit" color="textSecondary" component="p"
+                    style={{alignSelf: "center", padding: 20, color: "#666"}}>
+          Cart is empty 😱!
+          <p>Add more items in Cart✨</p>
+        </Typography>
       )}
     </GridList>
   );

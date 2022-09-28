@@ -30,7 +30,9 @@ const useStyles = makeStyles({
     height: "auto"
   },
   media: {
-    height: 200, objectFit: "cover",
+    height: 200,
+    maxWidth: "100%",
+    objectFit: "cover",
     borderRadius: 16,
   },
 
@@ -64,14 +66,22 @@ const CardProduct = ({state, dispatch}) => {
             >
               {product.title}
             </Typography>
-            <Typography align='center' color="secondary" variant="h6" gutterBottom component="h1">
-              Current price - ${product.price}
-            </Typography>
-            <Typography align='center' variant="inherit" color="textSecondary" component="p" style={{
-              padding: 10,
-            }}>
-              {product.description}
-            </Typography>
+            {/*<Typography align='center' color="secondary" variant="h6" gutterBottom component="h1">*/}
+            {/*  Current price - ${product.price}*/}
+            {/*</Typography>*/}
+            {/*<Typography align='center' variant="inherit" color="textSecondary" component="p" style={{*/}
+            {/*  padding: 10,*/}
+            {/*}}>*/}
+            {/*  {product.description}*/}
+            {/*</Typography>*/}
+            <CardActionArea style={{display: "flex", flexDirection: "column", alignItems: "center",padding:10 }}>
+              <Typography align='center' color="secondary" variant="h6" gutterBottom component="h1">
+                Current price - ${product.price}
+              </Typography>
+              <Typography align='center' variant="inherit" color="textSecondary" component="p">
+                {product.description}
+              </Typography>
+            </CardActionArea>
             <CardActionArea style={{textAlign: "center"}}>
               {cart.find((products) => products.id === product.id) ? (
                 <Button
@@ -82,7 +92,7 @@ const CardProduct = ({state, dispatch}) => {
                     padding: 5,
                     border: 0,
                     borderRadius: 5,
-                    backgroundColor: "rgb(114,78,125)",
+                    backgroundColor: "rgb(86,27,79)",
                     color: "#fff"
                   }}
                   onClick={() =>
@@ -108,7 +118,7 @@ const CardProduct = ({state, dispatch}) => {
                     padding: 5,
                     border: 0,
                     borderRadius: 5,
-                    backgroundColor: "rgb(146,44,138)",
+                    backgroundColor: "rgb(47,14,44)",
                     color: "#fff"
                   }}
 
